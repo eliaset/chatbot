@@ -4,7 +4,7 @@ function Chatbot() {
     <>
       <div>
         <input></input>
-        <button>Send</button>
+        <button>Sending</button>
       </div>
     </>
   );
