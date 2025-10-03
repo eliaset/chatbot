@@ -9,10 +9,10 @@ function Chatbot() {
   const change = (e) => {
     setInput(e.target.value);
   };
-  const send = () => {
+  const send = async () => {
     if (input.trim() === "") return;
     setMessage([...message, input]);
-    const reply = window.Chatbot.getResponse(input);
+    const reply = await window.Chatbot.getResponseAsync(input);
     setBotReplies([...botReplies, reply]);
     setInput("");
   };
