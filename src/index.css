@@ -1,0 +1,43 @@
+.all {
+  width: 350px;
+  height: 500px;
+  margin: 10px auto;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+.input-container {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin-bottom: 30px;
+}
+.message-container {
+  display: flex;
+  flex-direction: column;
+}
+.message {
+  display: flex;
+  flex-direction: row;
+  align-self: self-end;
+}
+
+.message img {
+  height: 40px;
+  align-self: center;
+}
+.bot {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+}
+.bot img {
+  height: 40px;
+  align-self: center;
+}
