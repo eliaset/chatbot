@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import botPic from "./assets/bot.png";
 import profilePic from "./assets/profile.png";
 function Chatbot() {
   const [input, setInput] = useState("");
   const [message, setMessage] = useState([]);
   const [botReplies, setBotReplies] = useState([]);
-
+  const scrollRef = useRef(null);
   const change = (e) => {
     setInput(e.target.value);
   };
@@ -24,10 +24,31 @@ function Chatbot() {
       setInput("");
     }
   };
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView();
+  }, [message, botReplies]);
 
   return (
     <>
       <div className="all">
+        <div className="message-container">
+          {message.map((m, index) => (
+            <div className="message-block" key={index}>
+              <div className="message">
+                <p>{m}</p>
+                <img src={profilePic} alt="User Avatar" />
+              </div>
+              {botReplies[index] && (
+                <div className="bot">
+                  <img src={botPic} alt="Bot Avatar" />
+                  <p>{botReplies[index]}</p>
+                </div>
+              )}
+            </div>
+          ))}
+          <div ref={scrollRef}></div>
+        </div>
+
         <div className="input-container">
           <input
             className="input"
@@ -39,19 +60,6 @@ function Chatbot() {
             Send
           </button>
         </div>
-        {message.map((m, index) => (
-          <div className="message-container" key={index}>
-            <div className="message">
-              <p key={index}>{m}</p>
-
-              <img src={profilePic} />
-            </div>
-            <div className="bot">
-              <img src={botPic} />
-              <p key={index}>{botReplies[index]}</p>
-            </div>
-          </div>
-        ))}
       </div>
     </>
   );
