@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import botPic from "./assets/bot.png";
+import loadingPic from "./assets/loading.gif";
 import profilePic from "./assets/profile.png";
 function Chatbot() {
   const [input, setInput] = useState("");
@@ -13,6 +14,8 @@ function Chatbot() {
     if (input.trim() === "") return;
     setMessage([...message, input]);
     const reply = await window.Chatbot.getResponseAsync(input);
+    if (reply === "") {
+    }
     setBotReplies([...botReplies, reply]);
     setInput("");
   };
@@ -38,12 +41,15 @@ function Chatbot() {
                 <p>{m}</p>
                 <img src={profilePic} alt="User Avatar" />
               </div>
-              {botReplies[index] && (
-                <div className="bot">
-                  <img src={botPic} alt="Bot Avatar" />
+
+              <div className="bot">
+                <img src={botPic} alt="Bot Avatar" />
+                {botReplies[index] ? (
                   <p>{botReplies[index]}</p>
-                </div>
-              )}
+                ) : (
+                  <img className="load" src={loadingPic} />
+                )}
+              </div>
             </div>
           ))}
           <div ref={scrollRef}></div>
