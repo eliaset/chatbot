@@ -16,12 +16,25 @@ function Chatbot() {
     setBotReplies([...botReplies, reply]);
     setInput("");
   };
+  const EnterEsc = async (e) => {
+    if (e.key === "Enter") {
+      send();
+    }
+    if (e.key === "Escape") {
+      setInput("");
+    }
+  };
 
   return (
     <>
       <div className="all">
         <div className="input-container">
-          <input className="input" onChange={change} value={input}></input>
+          <input
+            className="input"
+            onKeyDown={EnterEsc}
+            onChange={change}
+            value={input}
+          ></input>
           <button className="send" onClick={send}>
             Send
           </button>
