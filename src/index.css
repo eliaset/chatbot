@@ -74,7 +74,8 @@
 }
 
 .message p,
-.bot p {
+.bot p,
+.bot .load {
   padding: 12px 18px;
   border-radius: 22px;
   line-height: 1.5;
@@ -99,7 +100,8 @@
   align-self: flex-start;
 }
 
-.bot p {
+.bot p,
+.bot .load {
   background: var(--bot-bubble-bg);
   color: var(--text-color-dark);
   border-bottom-left-radius: 6px;
